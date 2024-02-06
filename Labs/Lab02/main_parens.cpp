@@ -18,6 +18,8 @@ int main() {
 
     int arrayValues[2*n];
 
+    srand(time(NULL)); //seed bc use of rand
+
     //how to put in the +1 =1 now
     for (int i=0; i < n; i++) {
         arrayValues[i] = 1;

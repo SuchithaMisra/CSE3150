@@ -28,9 +28,12 @@ TEST_CASE("Fisher-Yates")
         int original[length]; //keeps track of original numbers order (for refernce later)
         std::copy(test_ary, test_ary + length, original);
 
-        fisher_yates(test_ary, length, rand);  // calling fisher_yates function 
+        
+        for (int i=1;i<10;i++){  //calling function multiple times --> in this case, 10
+            fisher_yates(test_ary, length, rand);  // calling fisher_yates function 
+        }
 
-        CHECK_EQ(length, 10); //chekcing length 
+        CHECK_EQ(length, 10); //checking length 
 
         for (int i = 0; i < length; ++i)  //checking to see all elements are still in array
             CHECK(std::find(test_ary, test_ary + length, original[i]) != test_ary + length);
