@@ -3,6 +3,7 @@
 
 #include "fisher_yates.h"
 
+
 TEST_CASE("Fisher-Yates")
 {
     SUBCASE("swap test")
@@ -17,27 +18,84 @@ TEST_CASE("Fisher-Yates")
         CHECK_EQ(second, 1);
     }
 
-    SUBCASE("fisher_yates test")
+//NOTE many assertions b/c each testcase is run 1000+ times
+
+
+/*
+This test case shows 1 as the ratio since the list was well balanced, so the variable 
+to keep track of well balanced list got incremented
+*/
+    SUBCASE("fisher_yates test--> Even size array --> balanced ratio")
     {
-        const int length = 10;
-        int test_ary[length];
+        const int length = 80; //arry size
+        const int num_tests = 1000; // Number of tests
 
-        for (int i = 0; i < length; ++i)  //initializing array 
-            test_ary[i] = i;
+        int well_balanced_count = 0; // Counter for well-balanced lists
 
-        int original[length]; //keeps track of original numbers order (for refernce later)
-        std::copy(test_ary, test_ary + length, original);
+        for (int test_num = 0; test_num < num_tests; ++test_num)
+        {
+            int test_ary[length];
 
-        
-        for (int i=1;i<10;i++){  //calling function multiple times --> in this case, 10
-            fisher_yates(test_ary, length, rand);  // calling fisher_yates function 
+            for (int i = 0; i < length; ++i) // initializing array
+                test_ary[i] = i;
+
+            int original[length]; // keeps track of original numbers order (for reference later)
+            std::copy(test_ary, test_ary + length, original);
+
+            fisher_yates(test_ary, length, rand); // calling fisher_yates function
+
+            CHECK_EQ(length, 80); // checking length
+
+            bool is_well_balanced = true;
+
+            for (int i = 0; i < length; ++i) // checking to see all elements are still in array
+            {
+                if (std::find(test_ary, test_ary + length, original[i]) == test_ary + length)
+                {
+                    is_well_balanced = false;
+                    break;
+                }
+            }
+
+            CHECK_FALSE(std::equal(test_ary, test_ary + length, original)); // checking if "shuffle happened"
+
+            if (is_well_balanced)
+                well_balanced_count++; //adds 1 if ratio is balanced 
         }
 
-        CHECK_EQ(length, 10); //checking length 
+        double well_balanced_ratio = static_cast<double>(well_balanced_count) / num_tests;
 
-        for (int i = 0; i < length; ++i)  //checking to see all elements are still in array
-            CHECK(std::find(test_ary, test_ary + length, original[i]) != test_ary + length);
+        std::cout << "Apparent ratio of well-balanced lists: " << well_balanced_ratio << std::endl;
+        CHECK(well_balanced_ratio == 1.0); // checking ratio to ensure list was balanced 
+        std::cout << "Total number of runs: " << num_tests << std::endl;
 
-        CHECK_FALSE(std::equal(test_ary, test_ary + length, original));  //checking to see if "shuffle happend"
     }
+}
+
+/*
+This test case shows 0 as the ratio since the list wasn't well balanced, so the variable 
+to keep track of well balanced list didn't increment 
+
+last test ensures ratio is less than 1
+*/
+TEST_CASE("Odd Array Size --> Ratio less than 1")
+{
+    const int length = 15; // Odd array size
+    const int num_tests = 1000;
+
+    int well_balanced_count = 0;
+
+    for (int test_num = 0; test_num < num_tests; ++test_num)
+    {
+        int test_ary[length]; // Initializing array 
+
+        fisher_yates(test_ary, length, rand); //calling function
+    }
+
+    double well_balanced_ratio = static_cast<double>(well_balanced_count) / num_tests;
+
+    INFO("Well-balanced ratio for odd array: " << well_balanced_ratio);
+    std::cout << "Apparent ratio non-well-balanced lists: " << well_balanced_ratio / num_tests << std::endl;
+    CHECK(well_balanced_ratio < 1.0); // checking ratio is actually less than 1 
+    std::cout << "Total number of runs: " << num_tests << std::endl;
 }

@@ -9,3 +9,4 @@ int main() {
     cout << randomNumber << endl;
     }
 }
+ 

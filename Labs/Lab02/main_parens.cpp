@@ -17,7 +17,7 @@ int main() {
     cout << n << endl;
 
     int arrayValues[2*n];
-
+ 
     srand(time(NULL)); //seed bc use of rand
 
     //how to put in the +1 =1 now
