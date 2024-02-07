@@ -62,9 +62,6 @@ TEST_CASE("Fisher-Yates Ratio"){
         std::cout << "Ratio of successful outcomes with array size 4: " << ratio << std::endl;
     };
 
-
-
-
     SUBCASE("Fisher-Yates test 2") {
         int (*random_fcn) () = std::rand;
         int (*identity_fcn) () = &identity_function;
@@ -88,7 +85,6 @@ TEST_CASE("Fisher-Yates Ratio"){
         double ratio = static_cast<double>(successful_outcomes) / num_iterations;
         std::cout << "Ratio of successful outcomes with array size 5: " << ratio << std::endl;
     };
-
 
     SUBCASE("Fisher-Yates test 3") {
         int (*random_fcn) () = std::rand;

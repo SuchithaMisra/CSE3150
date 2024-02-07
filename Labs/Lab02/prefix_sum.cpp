@@ -12,8 +12,9 @@ int prefix_sum(int ary[],int length) {
     return sum;
 }
 
-//non_neg_prefix_sum --> checks if prefix_sum is positive
-bool non_neg_prefix_sum(int ary[],int length) {
+// non_positive_prefix_sum --> checks if sum is negative 
+
+bool non_pos_prefix_sum(int ary[],int length) {
     bool negative_found = false;  // initalizing to false
 
     if(length == 1 && ary[0] < 0) {  //edge case, if only 1 element & < 0 --> negative number
@@ -32,9 +33,9 @@ bool non_neg_prefix_sum(int ary[],int length) {
 
 }
 
-// non_positive_prefix_sum --> checks if sum is negative 
+//non_neg_prefix_sum --> checks if prefix_sum is positive
 
-bool non_positive_prefix_sum(int ary[],int length) {
+bool non_neg_prefix_sum(int ary[],int length) {
     bool positive_found = false;
 
     if (length == 1 && ary[0]>0){ //edge case, if only 1 element and value is > 0 --> positive number

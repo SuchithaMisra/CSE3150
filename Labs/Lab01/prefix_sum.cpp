@@ -48,7 +48,7 @@ bool non_positive_prefix_sum(int ary[],int length) {
             positive_found = true;
             break;
         }
-    }
+    }3
 
     return positive_found; 
 
