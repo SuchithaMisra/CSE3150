@@ -19,7 +19,7 @@ int swap(int * first, int * second) {
 
 void fisher_yates (int array[], const int length, int (*random_fcn)()) {
     for (int i=0; i<length -1;i++) {
-        int rnd_location = random_fcn() % (length - i);
+        int rnd_location = random_fcn() % (length - i); //shrinking array as you go down
         swap(&array[i],&array[rnd_location + 1]);
     }
 }

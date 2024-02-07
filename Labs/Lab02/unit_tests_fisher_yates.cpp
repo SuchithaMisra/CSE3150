@@ -1,13 +1,20 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 
+#include <iostream>
+#include <algorithm> // for std::copy
+#include <iterator>  // for std::begin
+
 #include "fisher_yates.h"
+#include "prefix_sum.h"
 
 
-TEST_CASE("Fisher-Yates")
-{
-    SUBCASE("swap test")
-    {
+int identity_function() {
+    return 0;
+}
+
+TEST_CASE("Fisher-Yates") {
+    SUBCASE("swap test") {
         int test_ary[] = {1, -1};
         int first = test_ary[0];
         int second = test_ary[1];
@@ -16,86 +23,85 @@ TEST_CASE("Fisher-Yates")
 
         CHECK_EQ(first, -1);
         CHECK_EQ(second, 1);
-    }
+    };
 
-//NOTE many assertions b/c each testcase is run 1000+ times
-
-
-/*
-This test case shows 1 as the ratio since the list was well balanced, so the variable 
-to keep track of well balanced list got incremented
-*/
-    SUBCASE("fisher_yates test--> Even size array --> balanced ratio")
-    {
-        const int length = 80; //arry size
-        const int num_tests = 1000; // Number of tests
-
-        int well_balanced_count = 0; // Counter for well-balanced lists
-
-        for (int test_num = 0; test_num < num_tests; ++test_num)
-        {
-            int test_ary[length];
-
-            for (int i = 0; i < length; ++i) // initializing array
-                test_ary[i] = i;
-
-            int original[length]; // keeps track of original numbers order (for reference later)
-            std::copy(test_ary, test_ary + length, original);
-
-            fisher_yates(test_ary, length, rand); // calling fisher_yates function
-
-            CHECK_EQ(length, 80); // checking length
-
-            bool is_well_balanced = true;
-
-            for (int i = 0; i < length; ++i) // checking to see all elements are still in array
-            {
-                if (std::find(test_ary, test_ary + length, original[i]) == test_ary + length)
-                {
-                    is_well_balanced = false;
-                    break;
-                }
-            }
-
-            CHECK_FALSE(std::equal(test_ary, test_ary + length, original)); // checking if "shuffle happened"
-
-            if (is_well_balanced)
-                well_balanced_count++; //adds 1 if ratio is balanced 
-        }
-
-        double well_balanced_ratio = static_cast<double>(well_balanced_count) / num_tests;
-
-        std::cout << "Apparent ratio of well-balanced lists: " << well_balanced_ratio << std::endl;
-        CHECK(well_balanced_ratio == 1.0); // checking ratio to ensure list was balanced 
-        std::cout << "Total number of runs: " << num_tests << std::endl;
-
-    }
 }
 
-/*
-This test case shows 0 as the ratio since the list wasn't well balanced, so the variable 
-to keep track of well balanced list didn't increment 
+TEST_CASE("Fisher-Yates Ratio"){
+     SUBCASE("Fisher-Yates test") {
+        int (*random_fcn) () = std::rand;
+        int (*identity_fcn) () = &identity_function;
 
-last test ensures ratio is less than 1
-*/
-TEST_CASE("Odd Array Size --> Ratio less than 1")
-{
-    const int length = 15; // Odd array size
-    const int num_tests = 1000;
+        int array[] = {1, 1, -1, -1};
 
-    int well_balanced_count = 0;
+        int successful_outcomes = 0;
+        const int num_iterations = 1000; // Number of iterations
 
-    for (int test_num = 0; test_num < num_tests; ++test_num)
-    {
-        int test_ary[length]; // Initializing array 
+        for (int i = 0; i < num_iterations; i++) {
+            int temp_array[sizeof(array) / sizeof(array[0])];
+            std::copy(std::begin(array), std::end(array), std::begin(temp_array));
 
-        fisher_yates(test_ary, length, rand); //calling function
-    }
+            fisher_yates(temp_array, sizeof(temp_array) / sizeof(temp_array[0]), random_fcn);
 
-    double well_balanced_ratio = static_cast<double>(well_balanced_count) / num_tests;
+            if (non_neg_prefix_sum(temp_array, sizeof(temp_array) / sizeof(temp_array[0]))) {
+                successful_outcomes++;
+            }
+        }
 
-    INFO("Well-balanced ratio for odd array: " << well_balanced_ratio);
-    std::cout << "Apparent ratio non-well-balanced lists: " << well_balanced_ratio / num_tests << std::endl;
-    CHECK(well_balanced_ratio < 1.0); // checking ratio is actually less than 1 
-    std::cout << "Total number of runs: " << num_tests << std::endl;
+        double ratio = static_cast<double>(successful_outcomes) / num_iterations;
+        std::cout << "Ratio of successful outcomes with array size 4: " << ratio << std::endl;
+    };
+
+
+
+
+    SUBCASE("Fisher-Yates test 2") {
+        int (*random_fcn) () = std::rand;
+        int (*identity_fcn) () = &identity_function;
+
+        int array[] = {56, 21, -1, 0 , 2};
+
+        int successful_outcomes = 0;
+        const int num_iterations = 1000; // Number of iterations
+
+        for (int i = 0; i < num_iterations; i++) {
+            int temp_array[sizeof(array) / sizeof(array[0])];
+            std::copy(std::begin(array), std::end(array), std::begin(temp_array));
+
+            fisher_yates(temp_array, sizeof(temp_array) / sizeof(temp_array[0]), random_fcn);
+
+            if (non_neg_prefix_sum(temp_array, sizeof(temp_array) / sizeof(temp_array[0]))) {
+                successful_outcomes++;
+            }
+        }
+
+        double ratio = static_cast<double>(successful_outcomes) / num_iterations;
+        std::cout << "Ratio of successful outcomes with array size 5: " << ratio << std::endl;
+    };
+
+
+    SUBCASE("Fisher-Yates test 3") {
+        int (*random_fcn) () = std::rand;
+        int (*identity_fcn) () = &identity_function;
+
+        int array[] = {3, -2};
+
+        int successful_outcomes = 0;
+        const int num_iterations = 1000; // Number of iterations
+
+        for (int i = 0; i < num_iterations; i++) {
+            int temp_array[sizeof(array) / sizeof(array[0])];
+            std::copy(std::begin(array), std::end(array), std::begin(temp_array));
+
+            fisher_yates(temp_array, sizeof(temp_array) / sizeof(temp_array[0]), random_fcn);
+
+            if (non_neg_prefix_sum(temp_array, sizeof(temp_array) / sizeof(temp_array[0]))) {
+                successful_outcomes++;
+            }
+        }
+
+        double ratio = static_cast<double>(successful_outcomes) / num_iterations;
+        std::cout << "Ratio of successful outcomes with array size 2: " << ratio << std::endl;
+    };
+
 }
