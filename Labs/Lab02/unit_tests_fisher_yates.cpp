@@ -9,6 +9,7 @@
 #include "prefix_sum.h"
 
 
+
 int identity_function() {
     return 0;
 }
@@ -23,6 +24,15 @@ TEST_CASE("Fisher-Yates") {
 
         CHECK_EQ(first, -1);
         CHECK_EQ(second, 1);
+    };
+
+    SUBCASE("swap test 2"){
+        int first = 5, second = 10;
+        int save_first = first, save_second = second;
+        swap (&first, &second);
+
+        CHECK(first == save_second);
+        CHECK(second == save_first);
     };
 
 }

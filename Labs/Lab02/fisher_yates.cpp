@@ -23,3 +23,4 @@ void fisher_yates (int array[], const int length, int (*random_fcn)()) {
         swap(&array[i],&array[rnd_location + 1]);
     }
 }
+
