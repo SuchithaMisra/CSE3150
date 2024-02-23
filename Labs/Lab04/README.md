@@ -20,4 +20,4 @@ To run Lab04, use the following commands:
     make check
     ```
 
-This will run the unit tests all implementations.
+This will run the unit tests for all implementations.
