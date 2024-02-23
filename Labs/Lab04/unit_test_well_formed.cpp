@@ -1,6 +1,6 @@
 #include "doctest.h"
 #include "gen_permutation.h"
-#include "wellFormedSymbols_Generator.h"
+#include "well_formed.h"
 
 bool isWellFormed(const std::vector<int>& sequence) {
     int balance = 0;
@@ -13,22 +13,22 @@ bool isWellFormed(const std::vector<int>& sequence) {
     return balance == 0; 
 }
 
-TEST_CASE("Testing generateWellFormedSymbols") {
+TEST_CASE("Testing permuteWellFormed") { // Changed test case name
     SUBCASE("Handles empty input") {
         std::vector<int> emptyInput;
-        auto result = generateWellFormedSymbols(emptyInput);
+        auto result = permuteWellFormed(emptyInput); // Changed function name
         CHECK(result.empty() == true);
     }
 
     SUBCASE("Skips sequence starting with -1") {
         std::vector<int> startsWithNegativeOne = {-1, 1, -1, 1, -1};
-        auto result = generateWellFormedSymbols(startsWithNegativeOne);
+        auto result = permuteWellFormed(startsWithNegativeOne); // Changed function name
         CHECK(result.empty() == true);
     }
 
     SUBCASE("Rearranges list") {
         std::vector<int> input = {1,-1,-1,1,1,-1,1,-1,-1}; 
-        auto result = generateWellFormedSymbols(input);
+        auto result = permuteWellFormed(input); // Changed function name
         std::vector<int> expected = {1,1,-1,1,-1,-1,1,-1}; 
 
         CHECK(result == expected);
@@ -36,7 +36,7 @@ TEST_CASE("Testing generateWellFormedSymbols") {
 
     SUBCASE("well-balanced list") {
         std::vector<int> complexInput = {1, 1, 1, -1, -1, 1, -1, -1, -1};
-        auto result = generateWellFormedSymbols(complexInput);
+        auto result = permuteWellFormed(complexInput); // Changed function name
         int balance = 0;
         bool isWellFormed = true;
         for (int symbol : result) {
@@ -49,5 +49,4 @@ TEST_CASE("Testing generateWellFormedSymbols") {
         CHECK(isWellFormed == true);
         CHECK(balance == 0);
     }
-
 }

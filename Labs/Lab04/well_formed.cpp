@@ -1,16 +1,16 @@
 #include <iostream>
 #include <vector>
 #include "prefix_sum.h"
-#include "gen_permutation.h"
+#include "well_formed.h"
 
 using namespace std;
 
-vector<int> generateWellFormedSymbols(const std::vector<int>& scrambledSymbols) {
+vector<int> permuteWellFormed(const std::vector<int>& scrambledSymbols) { // Changed function name
     if (scrambledSymbols.empty() || scrambledSymbols[0] == -1) {
         return vector<int>(); 
     }
 
-    int lowestValleyIndex = index_of_lowest_prefix_sum_element(&scrambledSymbols[0], scrambledSymbols.size());
+    int lowestValleyIndex = min_prefix_index(&scrambledSymbols[0], scrambledSymbols.size()); // Changed function name
 
     vector<int> P1(scrambledSymbols.begin(), scrambledSymbols.begin() + lowestValleyIndex + 1);
     vector<int> P2(scrambledSymbols.begin() + lowestValleyIndex + 1, scrambledSymbols.end());
