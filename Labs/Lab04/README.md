@@ -6,7 +6,7 @@ This is the README for Lab04 - Continuation of Lab02. It contains information ab
 
 To run Lab04, use the following commands:
 
--- For this lab I created make files, please use the following commands to compile the make file along with unit tests
+-- For this lab I created a make file, please use the following commands to compile the make file along with unit tests
 
 1. Compile main:
 
