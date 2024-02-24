@@ -15,7 +15,7 @@ TEST_CASE("Stack Test") {
             sum += item.value; //keep adding sum of popped elements 
         }
     } catch (const std::exception& e) { //error is thown if no elements on stack 
-        CHECK(sum >= 0); // checks if sum is non-negtive value 
+        CHECK(sum >= 0); // checks if sum is non-negtive value
     }
 }
 
