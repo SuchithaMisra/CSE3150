@@ -17,5 +17,5 @@ double Student::class_total_score() const {
 void Student::printInfo() const {
     std::cout << "ID: " << id << std::endl;
     std::cout << "Name: " << name << std::endl;
-    std::cout << "Total Score: " << class_total_score() << std::endl;
+    std::cout << "Total Class Score: " << class_total_score() << std::endl;
 }
