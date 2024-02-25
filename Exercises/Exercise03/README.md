@@ -8,7 +8,7 @@ The Good Design and Structs exercise provides an implementation of how to comput
 
 ## Usage
 
-To run Exercise03, use the following commands:
+To run Unit Tests in Exercise03, use the following commands:
 
 1. Compile the code:
 
@@ -22,5 +22,19 @@ To run Exercise03, use the following commands:
     ./a.out
     ```
 
-This will run the unit tests for the class_total_score implementation.
+To run Main file in Exercise03, use the following commands:
+
+1. Compile the code:
+
+    ```bash
+    g++ student_main.cpp student.cpp
+    ```
+
+2. Execute the compiled program:
+
+    ```bash
+    ./a.out
+    ```
+
+This will run the main file and unit tests for the class_total_score implementation.
 
