@@ -3,6 +3,6 @@
 
 #include <vector>
 
-std::vector<int> permuteWellFormed(const std::vector<int>& scrambledSymbols); // Changed function name
+std::vector<int> generate_well_formed_sequence(const std::vector<int>& scrambledSymbols);
 
 #endif 

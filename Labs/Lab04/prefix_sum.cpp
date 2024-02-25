@@ -6,7 +6,7 @@ int prefix_sum(int array[], int length) {
     sum += array[i];
   }
   
-  return sum;
+  return sum; 
 }
 
 bool non_negative_sum(int array[], int length) {

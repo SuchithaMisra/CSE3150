@@ -2,7 +2,6 @@
 #include <random>
 #include "fisher_yates.h"
 
-
 using namespace std;
 
 void swap(int* a, int* b) {
@@ -10,7 +9,6 @@ void swap(int* a, int* b) {
   *a = *b;
   *b = temp;
 }
-
 
 void show_data(int array[], const int length) {
   for (int i=0; i < length; i++) {

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "wellFormedSymbols_Generator.h"
+#include "well_formed.h" // Changed include to well_formed.h
 #include "gen_permutation.h"
 
 using namespace std;
@@ -25,7 +25,7 @@ int main() {
         }
         cout << endl;
 
-        compute_permutation_of_array(&symbols[0], symbols.size());
+        generate_permutation(&symbols[0], symbols.size()); // Corrected function call
 
         cout << "Scrambled list: ";
         for (int symbol : symbols) {
@@ -37,10 +37,9 @@ int main() {
             cout << "Skip sequence -> starts with -1" << endl;
             cout << endl;
             continue; 
-
         }
 
-        vector<int> wellFormedSymbols = generateWellFormedSymbols(symbols);
+        vector<int> wellFormedSymbols = generateWellFormedSequence(symbols); // Corrected function name
 
         cout << "Well formed sequence: ";
         for (int symbol : wellFormedSymbols) {
@@ -50,6 +49,5 @@ int main() {
         cout << endl;
     }
     
-
     return 0;
 }

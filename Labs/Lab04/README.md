@@ -6,18 +6,16 @@ This is the README for Lab04 - Continuation of Lab02. It contains information ab
 
 To run Lab04, use the following commands:
 
--- For this lab I created a make file, please use the following commands to compile the make file along with unit tests
-
-1. Compile main:
+1. Compile the code:
 
     ```bash
-    make run
+    g++ Unit_Tests.cpp fisher_yates.cpp prefix_sum.cpp gen_permutation.cpp well_formed.cpp -o Unit_Tests
     ```
 
-2. Run Tests:
+2. Execute the compiled program:
 
     ```bash
-    make check
+    ./Unit_Tests
     ```
 
 This will run the unit tests for all implementations.
