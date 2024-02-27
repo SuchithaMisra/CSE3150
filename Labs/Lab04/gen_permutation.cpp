@@ -2,12 +2,12 @@
 #include <cstdlib>
 #include "gen_permutation.h"
 #include "prefix_sum.h"
-#include "fisher_yates.h" // Added fisher_yates.h
+#include "fisher_yates.h" 
 
 using namespace std;
 
 void generate_permutation(int array[], int length){
-    fisher_yates(array, length, std::rand); // Corrected the call to fisher_yates
+    fisher_yates(array, length, std::rand); 
 }
 
 int calculate_min_prefix(const int array[], int length){ 
