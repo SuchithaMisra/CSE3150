@@ -1,5 +1,5 @@
 #ifndef GEN_PERMUTATION_H_
-#define GEN_PERMUTATION_H_
+#define GEN_PERMUTATION_H_ 
 
 #include <vector>
 
