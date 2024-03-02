@@ -4,7 +4,7 @@
 
 using namespace std;
 
-vector<int_vector> readIntVectorsFromFile(const string& filename) {
+vector<int_vector> readVectorsFromFile(const string& filename) {
     vector<int_vector> my_int_vector;
 
     ifstream in_file(filename);

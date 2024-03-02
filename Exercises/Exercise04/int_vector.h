@@ -17,6 +17,6 @@ struct int_vector {
     int_vector(int id, int from, int to);
 };
 
-vector<int_vector> readIntVectorsFromFile(const string& filename);
+vector<int_vector> readVectorsFromFile(const string& filename);
 
 #endif
