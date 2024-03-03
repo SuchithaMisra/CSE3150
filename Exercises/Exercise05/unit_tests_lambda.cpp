@@ -12,14 +12,14 @@ TEST_CASE("perfect numbers") {
 TEST_CASE("imperfect numbers") {
     CHECK(is_perfect(7) == false);
     CHECK(is_perfect(15) == false);
-    CHECK(is_perfect(123) == false);
-    CHECK(is_perfect(1000) == false);
+    CHECK(is_perfect(564) == false);
+    CHECK(is_perfect(5434) == false);
 }
 
 TEST_CASE("negative numbers") {
     CHECK(is_perfect(-6) == false);
-    CHECK(is_perfect(-28) == false);
-    CHECK(is_perfect(-496) == false);
+    CHECK(is_perfect(-19) == false);
+    CHECK(is_perfect(-873) == false);
 }
 
 TEST_CASE("zero") {
@@ -27,6 +27,6 @@ TEST_CASE("zero") {
 }
 
 TEST_CASE("large numbers") {
-    CHECK(is_perfect(99999) == false);
+    CHECK(is_perfect(675423) == false);
     CHECK(is_perfect(123456789) == false);
 }
