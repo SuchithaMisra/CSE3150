@@ -35,7 +35,7 @@ To run Main file in Exercise05, use the following commands:
     ```bash
     ./lambda_main
     ```
-   //Prompted to enter an integer to run through the function
+    ---> Will be prompted to enter an integer to run through the function
    
 This will run the main file and unit tests for the perfect number implementation.
 
