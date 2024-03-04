@@ -1,21 +1,17 @@
 #ifndef LAMBDA_H
 #define LAMBDA_H
 
-#include <iostream>
-#include <algorithm>
 #include <vector>
-#include <string>
+#include <algorithm>
 
-using namespace std;
-
-auto is_perfect = [](int number) -> bool {
+bool is_perfect(int number) {
     int sum = 1;
-    for(int i = 2; i < number - 1; i++) {
-        if (0 == number % i) {
+    for(int i = 2; i < number; i++) {
+        if (number % i == 0) {
             sum += i;
         }
     }
     return sum == number;
-};
+}
 
 #endif

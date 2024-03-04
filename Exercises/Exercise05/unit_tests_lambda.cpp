@@ -3,23 +3,27 @@
 #include "lambda.h"
 
 TEST_CASE("perfect numbers") {
-    CHECK(is_perfect(6) == true);
-    CHECK(is_perfect(28) == true);
-    CHECK(is_perfect(496) == true);
-    CHECK(is_perfect(8128) == true);
+    std::vector<int> perfect_numbers = {6, 28, 496, 8128};
+
+    std::for_each(perfect_numbers.begin(), perfect_numbers.end(), [](int number) {
+        CHECK(is_perfect(number) == true);
+    });
 }
 
 TEST_CASE("imperfect numbers") {
-    CHECK(is_perfect(7) == false);
-    CHECK(is_perfect(15) == false);
-    CHECK(is_perfect(564) == false);
-    CHECK(is_perfect(5434) == false);
+    std::vector<int> imperfect_numbers = {7, 15, 564, 5434};
+
+    std::for_each(imperfect_numbers.begin(), imperfect_numbers.end(), [](int number) {
+        CHECK(is_perfect(number) == false);
+    });
 }
 
 TEST_CASE("negative numbers") {
-    CHECK(is_perfect(-6) == false);
-    CHECK(is_perfect(-19) == false);
-    CHECK(is_perfect(-873) == false);
+    std::vector<int> negative_numbers = {-6, -19, -873};
+
+    std::for_each(negative_numbers.begin(), negative_numbers.end(), [](int number) {
+        CHECK(is_perfect(number) == false);
+    });
 }
 
 TEST_CASE("zero") {
@@ -27,6 +31,9 @@ TEST_CASE("zero") {
 }
 
 TEST_CASE("large numbers") {
-    CHECK(is_perfect(675423) == false);
-    CHECK(is_perfect(123456789) == false);
+    std::vector<int> large_numbers = {675423, 123456789};
+
+    std::for_each(large_numbers.begin(), large_numbers.end(), [](int number) {
+        CHECK(is_perfect(number) == false);
+    });
 }
