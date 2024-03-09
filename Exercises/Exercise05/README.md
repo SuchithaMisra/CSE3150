@@ -13,13 +13,13 @@ To run Unit Tests in Exercise05, use the following commands:
 1. Compile the code:
 
     ```bash
-    g++ -std=c++11 unit_tests_lambda.cpp -o unit_tests_lambda
+    g++ unit_tests_lambda.cpp lambda.cpp
     ```
 
 2. Execute the compiled program:
 
     ```bash
-    ./unit_tests_lambda
+    ./a.out
     ```
 
 To run Main file in Exercise05, use the following commands:
@@ -27,13 +27,13 @@ To run Main file in Exercise05, use the following commands:
 1. Compile the code:
 
     ```bash
-    g++ -std=c++11 lambda_main.cpp -o lambda_main
+    g++ lambda_main.cpp lambda.cpp
     ```
 
 2. Execute the compiled program:
 
     ```bash
-    ./lambda_main
+    ./a.out
     ```
     ---> Will be prompted to enter an integer to run through the function
    
