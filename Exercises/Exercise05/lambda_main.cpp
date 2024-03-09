@@ -3,6 +3,8 @@
 #include <algorithm>
 #include "lambda.h"
 
+//implementation method was 2nd way in the directions
+
 int main() {
     std::vector<int> numbers = {6, 28, 496, 8128};
 
