@@ -35,13 +35,14 @@ int main() {
     int size = my_double_vector.size();
 
     for (int i = 0; i < size; i++) {
-        for (int j = i + 1; j < size; j++) { // Start from i + 1 to avoid redundant pairs and self-comparison
+        // loop to start from i + 1
+        for (int j = i + 1; j < size; j++) { 
             my_distance my_distance1(i, j, cosine_distance(my_double_vector[i], my_double_vector[j]));
             all_pairs_distances.push_back(my_distance1);
         }
     }
 
-   // takes care of sorting disstance based on the cos closeness
+   // sorts distance based on cos closeness
     sort(all_pairs_distances.begin(), all_pairs_distances.end(),
          [](const my_distance &left, const my_distance &right) -> bool {
              return left.cos_distance < right.cos_distance;

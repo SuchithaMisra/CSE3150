@@ -19,10 +19,6 @@ struct double_vector {
     double_vector(double x, double y, int id) :  x(x), y(y), id(id) {};
 };
 
-
-
-
-/**/
 double square(const double & d);
 double dot_product(const double_vector & one, const double_vector & two) ;
 double magnitude(const double_vector & my_vector);
