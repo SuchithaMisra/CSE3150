@@ -1,10 +1,10 @@
-# Lab06  
+# Lab06 - Matrix Based Reachability
 
-This is the README for Lab06. It contains information about how to build and run the code.
+This is the README for Lab06 - Matrix Based Reachability. It contains information about how to build and run the code.
 
 ## Usage
 
-To run Main file in Lab05, use the following commands:
+To run Main file in Lab06, use the following commands:
 
 1. Compile the code:
 
