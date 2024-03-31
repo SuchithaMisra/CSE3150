@@ -1,19 +1,32 @@
-#include "Matrix_Modified.h"
+#include "MatrixModified.h"
 #include <iostream>
 
 int main() {
-    int matrix_size = 4;
-    std::vector<std::vector<int>> input_matrix1 = {{0, 1, 0, -1}, {-1, 0, 1, 0}, {0, -1, 0, 1}, {1, 0, -1, 0}};
-    std::vector<std::vector<int>> input_matrix2 = {{1, 0, -1, 0}, {0, -1, 0, 1}, {-1, 0, 1, 0}, {0, 1, 0, -1}};
-    std::vector<std::vector<int>> input_matrix3 = {{-1, 0, 1, 0}, {0, 1, 0, -1}, {1, 0, -1, 0}, {0, -1, 0, 1}};
+    std::vector<std::vector<int>> D_0 = {{0, 2, 2, 2},
+                                 {2, 0, 2, 2},
+                                 {2, 2, 0, 2},
+                                 {2, 2, 2, 0}};
+
+    std::vector<std::vector<int>> D_minus1 = {{-1, 2, 2, 2},
+                                     {2, 2, 2, 2},
+                                     {2, 2, 2, 2},
+                                     {2, 2, 2, 2}};
+
+    std::vector<std::vector<int>> D_plus1 = {{2, 1, 2, 2},
+                                    {2, 2, 1, 2},
+                                    {2, 2, 2, 1},
+                                    {1, 2, 2, 2}};
+
+    int n = D_0.size();
     
-    Matrix_Modified graph(matrix_size, input_matrix1, input_matrix2, input_matrix3);
-    Matrix_Modified result = graph.multiplyMatrices(graph);
-    result.normalizeMatrix(matrix_size);
+    MatrixModified graph(n);
+    graph.initialize(D_minus1, D_0, D_plus1);
+    MatrixModified result = graph.multiply(graph);
+    result.normalize(n);
     
-    for (int i = 0; i < matrix_size; ++i) {
-        for (int j = 0; j < matrix_size; ++j) {
-            std::cout << result.getElementAt(i, j) << " ";
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            std::cout << result.getElement(i, j) << " ";
         }
         std::cout << std::endl;
     }

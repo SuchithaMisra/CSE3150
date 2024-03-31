@@ -9,7 +9,7 @@ To run Main file in Lab05, use the following commands:
 1. Compile the code:
 
     ```bash
-    g++ matrix_main.cpp Matrix_Modified.cpp
+    g++ matrix_main.cpp MatrixModified.cpp
     ```
 
 2. Execute the compiled program:
@@ -22,7 +22,7 @@ To run Unit Test file in Lab05, use the following commands:
 1. Compile the code:
 
     ```bash
-    g++ unit_tests_matrix_modified.cpp Matrix_Modified.cpp
+    g++ unit_tests_matrix_modified.cpp MatrixModified.cpp
     ```
 
 2. Execute the compiled program:
