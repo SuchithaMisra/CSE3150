@@ -17,7 +17,7 @@ To run Main file in Lab06, use the following commands:
     ```bash
     ./a.out
     ```
-To run Unit Test file in Lab05, use the following commands:
+To run Unit Test file in Lab06, use the following commands:
 
 1. Compile the code:
 
