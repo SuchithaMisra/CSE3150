@@ -10,11 +10,9 @@ int main() {
 
     Triangle3d triangle(p1, p2, p3);
 
-    // Display the distance between points p1 and p2 for verification
     cout << "Distance between points p1 & p2 --> " << triangle.pointDistance(p1, p2) << endl;
     cout << "Should be the sqrt(10) = sqrt(1^2 + 2^2 + 1^2)" << endl;
 
-    // Display the area of the triangle
     cout << "Area of triangle --> " << triangle.getArea() << endl;
 
     return 0;
