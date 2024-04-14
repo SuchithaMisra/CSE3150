@@ -1,4 +1,4 @@
-# Exercise07 - Week 9
+# Exercise07 - Week 9 - Area of a triangle with 3D points
 
 This is the README for Week 9. It contains information about how to build and run the code.
 
