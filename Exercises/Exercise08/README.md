@@ -4,7 +4,7 @@ This is the README for Week 10. It contains information about how to build and r
 
 ## Introduction
 
-The weeks exercise provides an implementation to solve the diamond problem using virtual inheritence/OOP along with unit tests to verify its correctness.
+The weeks exercise provides an implementation to solve the diamond problem using virtual inheritance/OOP along with unit tests to verify its correctness.
 
 ## Usage
 
