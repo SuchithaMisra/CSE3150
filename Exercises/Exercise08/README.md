@@ -1,4 +1,4 @@
-# Exercise08 - Week 10 - : Hybrid vehicles
+# Exercise08 - Week 10 - Hybrid vehicles
 
 This is the README for Week 10. It contains information about how to build and run the code.
 
